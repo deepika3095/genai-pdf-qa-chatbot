@@ -63,7 +63,7 @@ print(f"Loaded {len(pages)} pages from the PDF.")
 
 ```
 ### OUTPUT :
-<img width="1290" height="403" alt="image" src="https://github.com/user-attachments/assets/202b9d73-7deb-4f92-bb0f-38170c383756" />
+<img width="1031" height="436" alt="image" src="https://github.com/user-attachments/assets/0db62872-674b-4b02-9a42-10a410247400" />
 
 ### RESULT :
 Thus, a question-answering chatbot capable of processing and extracting information from a provided PDF document using LangChain is executed successfully.
