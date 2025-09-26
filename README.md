@@ -34,8 +34,6 @@ from langchain.vectorstores import DocArrayInMemorySearch
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
 from langchain.chat_models import ChatOpenAI
-
-# Function to build PDF QA
 def build_pdf_qa(pdf_path: str):
     if not os.path.isfile(pdf_path):
         raise FileNotFoundError(f"File not found: {pdf_path}")
@@ -48,25 +46,17 @@ def build_pdf_qa(pdf_path: str):
         llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0),
         retriever=db.as_retriever()
     )
-
-# Load the PDF and create QA chain
 pdf_file = "docs/cs229_lectures/pdf-3.pdf"
 qa = build_pdf_qa(pdf_file)
-
-# List of 3 questions
 questions = [
     "What is Perceptron Learning Algorithm in this document?",
     "Explain the main topics covered in this PDF?",
     "What are the key formulas mentioned in this document?"
 ]
-
-# Ask each question and print the answer
 for i, q in enumerate(questions, 1):
     answer = qa.run(q)
     print(f"Q{i}: {q}")
     print(f"A{i}: {answer}\n")
-
-# Optional: check number of pages loaded
 loader = PyPDFLoader(pdf_file)
 pages = loader.load()
 print(f"Loaded {len(pages)} pages from the PDF.")
